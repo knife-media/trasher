@@ -161,6 +161,8 @@ $offensive = select_comments();
 
     <style>
         body {
+            margin: 0;
+            padding: 1rem;
             font: normal 16px/1.5 -apple-system, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", sans-serif;
         }
 
