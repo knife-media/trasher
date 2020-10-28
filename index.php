@@ -26,7 +26,18 @@ function connect_database() {
         PDO::ATTR_STRINGIFY_FETCHES => true
     ];
 
-    return new PDO($dsn, $_ENV['DB_USER'], $_ENV['DB_PASSWORD'], $settings);
+    $database = new PDO($dsn, $_ENV['DB_USER'], $_ENV['DB_PASSWORD'], $settings);
+
+    $query = "CREATE TABLE IF NOT EXISTS trasher (
+        id int NOT NULL AUTO_INCREMENT,
+        comment_id int NOT NULL,
+        PRIMARY KEY (id),
+        UNIQUE KEY comment_id (comment_id))";
+
+    // Try to create table
+    $database->exec($query);
+
+    return $database;
 }
 
 
